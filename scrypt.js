@@ -5,6 +5,7 @@ document.getElementById('myButton').addEventListener('click', function() {
     
     if (/android/i.test(userAgent)) {
         os = "Android";
+        window.location.href = 'mybank://open';
     } else if (/iPad|iPhone|iPod/.test(userAgent)) {
         os = "iOS";
     } else {
