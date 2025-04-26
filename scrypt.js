@@ -34,8 +34,9 @@
                 window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
                 setTimeout(function() {
                     var end = Date.now();
-                    document.getElementById('myButton').textContent = `${end - start} ₽`;
+                    document.getElementById('myButton').textContent = `${end - start} ₽2`;
                      if (end - start < timeout + 50) {  
+                             alert(`На iOS открытие приложения не поддерживается. Данные платежа: ${JSON.stringify(paymentData)}`);
                         // Если приложение не открылось, переходим на сайт
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
