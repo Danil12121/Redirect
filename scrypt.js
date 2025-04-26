@@ -50,23 +50,26 @@
                 alert(`На iOS открытие приложения не поддерживается. Данные платежа: ${JSON.stringify(paymentData)}`);
             } else {
                 os = "Desktop";
-                    var timeout = 5000;
-             const iframe = document.createElement('iframe');
-             iframe.style.display = 'none';
-             iframe.src = `paymentapp://?data=${encodeURIComponent(encryptedData)}`;
-             document.body.appendChild(iframe);
-                // Пробуем открыть приложение с зашифрованными данными
-                //window.location = `paymentapp://?data=${encodeURIComponent(encryptedData)}`;
-                setTimeout(function() {
-                    var end = Date.now();
-                    document.getElementById('myButton').textContent = `${end - start} ₽10`;
-                     if (document.body.contains(iframe)){  
-                        document.body.removeChild(iframe);
-                        // Если приложение не открылось, переходим на сайт
-                       window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = `paymentapp://?data=${encodeURIComponent(encryptedData)}`;
+                document.body.appendChild(iframe);
+        
+                setTimeout(() => {
+                        document.getElementById('myButton').textContent = `₽11`;
+                    if (!appLaunched) {
+                        iframe.remove();
+                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
-
-                }, timeout);
+                }, 1000);
+        
+        // Проверка через polling
+                const checkInterval = setInterval(() => {
+                    if (!document.body.contains(iframe)) {
+                        clearInterval(checkInterval);
+                        appLaunched = true;
+                    }
+                  }, 100);
             }
             
             // Меняем текст кнопки
