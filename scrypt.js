@@ -27,17 +27,15 @@
             if (/android/i.test(userAgent)) {
                 os = "Android";
                 
-                var timeout = 3000;
+                var timeout = 2000;
                 var start = Date.now();
                 
                 // Пробуем открыть приложение с зашифрованными данными
-               // window.location = `notmybank://open?data=${encodeURIComponent(encryptedData)}`;
-                //window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
+                window.location = `notmybank://open?data=${encodeURIComponent(encryptedData)}`;
                 setTimeout(function() {
-                alert(`На iOS открытие приложения не поддерживается. Данные платежа: ${JSON.stringify(paymentData)}`);
                     var end = Date.now();
-                    document.getElementById('myButton').textContent = `${end - start} ₽`;
-                     if (end - start < timeout + 3500) {  
+                   // document.getElementById('myButton').textContent = `${end - start} ₽`;
+                     if (end - start > timeout + 3500) {  
                         // Если приложение не открылось, переходим на сайт
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
