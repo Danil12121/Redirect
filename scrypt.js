@@ -50,13 +50,14 @@
                 alert(`На iOS открытие приложения не поддерживается. Данные платежа: ${JSON.stringify(paymentData)}`);
             } else {
                 os = "Desktop";
+                let appLaunched = false;
                 const iframe = document.createElement('iframe');
                 iframe.style.display = 'none';
                 iframe.src = `paymentapp://?data=${encodeURIComponent(encryptedData)}`;
                 document.body.appendChild(iframe);
         
                 setTimeout(() => {
-                        document.getElementById('myButton').textContent = `₽11`;
+                        document.getElementById('myButton').textContent = `₽12`;
                     if (!appLaunched) {
                         iframe.remove();
                         window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
