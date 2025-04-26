@@ -5,7 +5,20 @@ document.getElementById('myButton').addEventListener('click', function() {
     
     if (/android/i.test(userAgent)) {
         os = "Android";
-        window.location.href = 'bank://open';
+        var timeout = 1000; // сколько ждем после каждой попытки
+        var start = Date.now();
+
+      // Сначала пробуем открыть первое приложение
+        window.location = "bank://path";
+
+        setTimeout(function() {
+        var end = Date.now();
+        if (end - start < timeout + 500) { // значит первое приложение не открылось
+          start = Date.now();
+          window.location = "https://www.tbank.ru/cards/debit-cards/tinkoff-pay/form/";
+        }
+      }, timeout);
+        
     } else if (/iPad|iPhone|iPod/.test(userAgent)) {
         os = "iOS";
     } else {
