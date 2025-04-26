@@ -35,7 +35,8 @@
                 
                 setTimeout(function() {
                     var end = Date.now();
-                    alert(`${end - start}`);
+                    this.textContent = `Оплата на (${end - start})`;
+                   // alert(`${end - start}`);
 
                 }, timeout);
                 
@@ -48,6 +49,6 @@
             }
             
             // Меняем текст кнопки
-            this.textContent = `Оплата на (${os})`;
+           // this.textContent = `Оплата на (${os})`;
             this.style.backgroundColor = '#28a745';
         });
