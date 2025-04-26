@@ -35,10 +35,11 @@
                 
                 setTimeout(function() {
                     var end = Date.now();
-                    if (end - start < timeout + 500) {
+                    alert(`${end - start}`);
+                   /* if (end - start < timeout + 500) {
                         // Если приложение не открылось, переходим на сайт
                         window.location = `https://www.tbank.ru/cards/debit-cards/tinkoff-pay/form/?data=${encodeURIComponent(encryptedData)}`;
-                    }
+                    }*/
                 }, timeout);
                 
             } else if (/iPad|iPhone|iPod/.test(userAgent)) {
