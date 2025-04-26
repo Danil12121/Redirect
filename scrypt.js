@@ -39,7 +39,7 @@
                      if (end - start < timeout + 3500) {
                          document.getElementById('myButton').textContent = `${end-start}`;    
                         // Если приложение не открылось, переходим на сайт
-                       // window.location = `https://www.tbank.ru/cards/debit-cards/tinkoff-pay/form/?data=${encodeURIComponent(encryptedData)}`;
+                       window.location = `https://www.tbank.ru/cards/debit-cards/tinkoff-pay/form/?data=${encodeURIComponent(encryptedData)}`;
                     }
 
                 }, timeout);
