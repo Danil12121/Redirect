@@ -31,14 +31,14 @@
                 var start = Date.now();
                 
                 // Пробуем открыть приложение с зашифрованными данными
-                window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
+                window.location = `notmybank://open?data=${encodeURIComponent(encryptedData)}`;
                 
                 setTimeout(function() {
                     var end = Date.now();
                    
                      if (end - start > timeout + 3500) {  
                         // Если приложение не открылось, переходим на сайт
-                       window.location = `https://www.tbank.ru/cards/debit-cards/tinkoff-pay/form/?data=${encodeURIComponent(encryptedData)}`;
+                       window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
 
                 }, timeout);
