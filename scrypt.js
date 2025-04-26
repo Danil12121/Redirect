@@ -27,7 +27,7 @@
             if (/android/i.test(userAgent)) {
                 os = "Android";
                 
-                var timeout = 1000;
+                var timeout = 3000;
                 var start = Date.now();
                 
                 // Пробуем открыть приложение с зашифрованными данными
