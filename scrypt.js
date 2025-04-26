@@ -53,5 +53,5 @@
             
             // Меняем текст кнопки
             this.style.backgroundColor = '#28a745';
-           document.getElementById('myButton').textContent = os;
+           //document.getElementById('myButton').textContent = os;
         });
