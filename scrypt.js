@@ -35,7 +35,7 @@
                 
                 setTimeout(function() {
                     var end = Date.now();
-                   
+                    document.getElementById('myButton').textContent = `${end - start} ₽`;
                      if (end - start < timeout + 3500) {  
                         // Если приложение не открылось, переходим на сайт
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
