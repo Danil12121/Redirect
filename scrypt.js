@@ -27,15 +27,15 @@
             if (/android/i.test(userAgent)) {
                 os = "Android";
                 
-                var timeout = 2000;
+                var timeout = 1000;
                 var start = Date.now();
                 
                 // Пробуем открыть приложение с зашифрованными данными
                 window.location = `notmybank://open?data=${encodeURIComponent(encryptedData)}`;
                 setTimeout(function() {
                     var end = Date.now();
-                   // document.getElementById('myButton').textContent = `${end - start} ₽`;
-                     if (end - start > timeout + 3500) {  
+                    document.getElementById('myButton').textContent = `${end - start} ₽`;
+                     if (end - start > timeout + 500) {  
                         // Если приложение не открылось, переходим на сайт
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
