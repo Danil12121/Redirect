@@ -27,14 +27,14 @@
             if (/android/i.test(userAgent)) {
                 os = "Android";
                 
-                var timeout = 500;
+                var timeout = 300;
                 var start = Date.now();
                 
                 // Пробуем открыть приложение с зашифрованными данными
                 window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
                 setTimeout(function() {
                     var end = Date.now();
-                    document.getElementById('myButton').textContent = `${end - start} ₽3`;
+                    document.getElementById('myButton').textContent = `${end - start} ₽4`;
                      if (end - start > timeout + 50) {  
                         // Если приложение не открылось, переходим на сайт
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
