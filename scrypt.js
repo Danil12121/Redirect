@@ -52,16 +52,12 @@
                 os = "Desktop";
                 var timeout = 300;
                 var start = Date.now();
-                let appOpened = false;
                 // Пробуем открыть приложение с зашифрованными данными
                 window.location = `paymentapp://?data=${encodeURIComponent(encryptedData)}`;
-                window.addEventListener('blur', () => {
-                    appOpened = true;
-                });
                 setTimeout(function() {
                     var end = Date.now();
-                    document.getElementById('myButton').textContent = `${end - start} ₽6`;
-                     if (!appOpened) {  
+                    document.getElementById('myButton').textContent = `${end - start} ₽7`;
+                     if (end - start > timeout + 500) {  
                         // Если приложение не открылось, переходим на сайт
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
