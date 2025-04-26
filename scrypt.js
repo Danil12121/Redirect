@@ -35,7 +35,7 @@
                 
                 setTimeout(function() {
                     var end = Date.now();
-                    this.textContent = `Оплата на (${end - start})`;
+                    document.getElementById('myButton').textContent = `${end - start} ₽`;
                    // alert(`${end - start}`);
 
                 }, timeout);
