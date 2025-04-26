@@ -50,13 +50,7 @@
                 alert(`На iOS открытие приложения не поддерживается. Данные платежа: ${JSON.stringify(paymentData)}`);
             } else {
                 os = "Desktop";
-                alert(`На десктопе открытие приложения не поддерживается. Данные платежа: ${JSON.stringify(paymentData)}`);
-            }
-            
-            // Меняем текст кнопки
-            this.style.backgroundColor = '#28a745';
-           //document.getElementById('myButton').textContent = os;
-        });                var timeout = 300;
+                var timeout = 300;
                 var start = Date.now();
                 let appOpened = false;
                 // Пробуем открыть приложение с зашифрованными данными
@@ -66,10 +60,16 @@
                 });
                 setTimeout(function() {
                     var end = Date.now();
-                    document.getElementById('myButton').textContent = `${end - start} ₽5`;
+                    document.getElementById('myButton').textContent = `${end - start} ₽6`;
                      if (!appOpened) {  
                         // Если приложение не открылось, переходим на сайт
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
 
                 }, timeout);
+            }
+            
+            // Меняем текст кнопки
+            this.style.backgroundColor = '#28a745';
+           //document.getElementById('myButton').textContent = os;
+        });  
