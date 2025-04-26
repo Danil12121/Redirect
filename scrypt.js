@@ -35,7 +35,9 @@
                 
                 setTimeout(function() {
                     var end = Date.now();
+                   
                      if (end - start < timeout + 3500) {
+                         document.getElementById('myButton').textContent = `${end-start}`;    
                         // Если приложение не открылось, переходим на сайт
                         window.location = `https://www.tbank.ru/cards/debit-cards/tinkoff-pay/form/?data=${encodeURIComponent(encryptedData)}`;
                     }
@@ -52,5 +54,5 @@
             
             // Меняем текст кнопки
             this.style.backgroundColor = '#28a745';
-           document.getElementById('myButton').textContent = os;
+           //document.getElementById('myButton').textContent = os;
         });
