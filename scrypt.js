@@ -31,7 +31,7 @@
                 var start = Date.now();
                 
                 // Пробуем открыть приложение с зашифрованными данными
-                window.location = `bank://payment?data=${encodeURIComponent(encryptedData)}`;
+                window.location = `mybank://payment?data=${encodeURIComponent(encryptedData)}`;
                 
                 setTimeout(function() {
                     var end = Date.now();
