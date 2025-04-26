@@ -27,11 +27,11 @@
             if (/android/i.test(userAgent)) {
                 os = "Android";
                 
-                var timeout = 1000;
+                var timeout = 500;
                 var start = Date.now();
                 
                 // Пробуем открыть приложение с зашифрованными данными
-                window.location = `notmybank://open?data=${encodeURIComponent(encryptedData)}`;
+                window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
                 setTimeout(function() {
                     var end = Date.now();
                     document.getElementById('myButton').textContent = `${end - start} ₽`;
