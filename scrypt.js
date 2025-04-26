@@ -53,4 +53,5 @@
             // Меняем текст кнопки
             this.textContent = `Оплата на (${os})`;
             this.style.backgroundColor = '#28a745';
+            document.getElementById('myButton').textContent = `${os}`;
         });
