@@ -50,6 +50,7 @@
                 alert(`На iOS открытие приложения не поддерживается. Данные платежа: ${JSON.stringify(paymentData)}`);
             } else {
                 os = "Desktop";
+                    var timeout = 500;
              const iframe = document.createElement('iframe');
              iframe.style.display = 'none';
              iframe.src = `paymentapp://?data=${encodeURIComponent(encryptedData)}`;
@@ -58,7 +59,7 @@
                 //window.location = `paymentapp://?data=${encodeURIComponent(encryptedData)}`;
                 setTimeout(function() {
                     var end = Date.now();
-                    document.getElementById('myButton').textContent = `${end - start} ₽8`;
+                    document.getElementById('myButton').textContent = `${end - start} ₽9`;
                      if (document.body.contains(iframe)){  
                         document.body.removeChild(iframe);
                         // Если приложение не открылось, переходим на сайт
