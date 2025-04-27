@@ -16,17 +16,24 @@
         document.getElementById('myButton').addEventListener('click', function() {
             // Определяем ОС
             let os;
+            if (/android/i.test(userAgent)) {
+                os = "Android";
+            } else if (/iPad|iPhone|iPod/.test(userAgent)) {
+                os = "iOS";
+            } else {
+                os = "Desktop";
+                    
             const userAgent = navigator.userAgent;
             const paymentData = {
                 amount: amount,
-                currency: 'RUB'
+                currency: 'RUB',
+                os: os
             };
 
             // Шифруем данные
             const encryptedData = simpleEncrypt(JSON.stringify(paymentData));
             if (/android/i.test(userAgent)) {
                 os = "Android";
-                
                 var timeout = 300;
                 var start = Date.now();
                 let appOpened = false;
@@ -57,7 +64,7 @@
                 document.body.appendChild(iframe);
         
                 setTimeout(() => {
-                        document.getElementById('myButton').textContent = `₽12`;
+                        document.getElementById('myButton').textContent = `₽13`;
                     if (!appLaunched) {
                         iframe.remove();
                         window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
