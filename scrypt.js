@@ -1,20 +1,16 @@
-        // Генерируем случайную сумму от 100 до 10000 рублей
-        function generateRandomAmount() {
+
+  function generateRandomAmount() {
             return Math.floor(Math.random() * 9900) + 100;
         }
         
-        // Простая функция "шифрования" (в реальном проекте используйте более надежные методы)
         function simpleEncrypt(data) {
             return btoa(unescape(encodeURIComponent(data)));
         }
         
-        // Показываем сумму на экране
         const amount = generateRandomAmount();
         document.getElementById('amountDisplay').textContent = `Сумма: ${amount} ₽`;
 
-        // Обработчик кнопки
         document.getElementById('myButton').addEventListener('click', function() {
-            // Определяем ОС
             let os;
 
             const userAgent = navigator.userAgent;
@@ -31,34 +27,29 @@
                 os: os
             };
 
-            // Шифруем данные
             const encryptedData = simpleEncrypt(JSON.stringify(paymentData));
             if (/android/i.test(userAgent)) {
                 os = "Android";
-                var timeout = 300;
-                var start = Date.now();
                 let appOpened = false;
-                // Пробуем открыть приложение с зашифрованными данными
                 window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
                 window.addEventListener('blur', () => {
                     appOpened = true;
                 });
                     
                 setTimeout(function() {
-                    window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
+                    window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
                 window.addEventListener('blur', () => {
                     appOpened = true;
                 });
-                }, timeout);
+                }, 300);
                     
                 setTimeout(function() {
-                    document.getElementById('myButton').textContent = `₽7`;
+                    document.getElementById('myButton').textContent = `₽8`;
                      if (!appOpened) {  
-                        // Если приложение не открылось, переходим на сайт
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
 
-                }, timeout);
+                }, 300);
                 
             } else if (/iPad|iPhone|iPod/.test(userAgent)) {
                 os = "iOS";
@@ -71,7 +62,6 @@
                 iframe.src = `paymentapp://?data=${encodeURIComponent(encryptedData)}`;
                 document.body.appendChild(iframe);
 
-            // Проверка через polling
                 const checkInterval = setInterval(() => {
                     if (!document.body.contains(iframe)) {
                         clearInterval(checkInterval);
@@ -81,7 +71,7 @@
                   }, 100);        
                     
                 setTimeout(() => {
-                        document.getElementById('myButton').textContent = `₽19`;
+                        document.getElementById('myButton').textContent = `₽20`;
                     if (!appLaunched) {
                         clearInterval(checkInterval);
                         iframe.remove();
@@ -92,7 +82,6 @@
 
             }
             
-            // Меняем текст кнопки
             this.style.backgroundColor = '#28a745';
            //document.getElementById('myButton').textContent = os;
         });  
