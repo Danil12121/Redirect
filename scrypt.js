@@ -37,23 +37,18 @@ document.getElementById('myButton').addEventListener('click', function() {
 		//let appOpened = false;
 
 		window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
-		window.addEventListener('blur', () => {  });
+		// window.addEventListener('blur', () => {  });
 
-		// setTimeout(() => {
-			// setTimeout(() => {
-			if (!document.hidden) {
-				window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
-				window.addEventListener('blur', () => {  }); //appOpened = true;
-			}	
-			// }, 5000);
+		if (!document.hidden) {
+			window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
+			// window.addEventListener('blur', () => {  }); //appOpened = true;
+		}	
+			
+		if (!document.hidden) {
 			setTimeout(() => {
-				if (!document.hidden) {
-					redirectToFallback(encryptedData);
-				}
+				redirectToFallback(encryptedData);
 			}, 5000);
-		// }, 5000);
-
-
+		}
 	} else if (/iPad|iPhone|iPod/.test(userAgent)) {
 		alert(`На iOS открытие приложения не поддерживается. Данные платежа: ${JSON.stringify(paymentData)}`);
 	} else {
