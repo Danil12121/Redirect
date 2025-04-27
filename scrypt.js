@@ -30,6 +30,8 @@
             const encryptedData = simpleEncrypt(JSON.stringify(paymentData));
             if (/android/i.test(userAgent)) {
                 os = "Android";
+
+              setTimeout(function() {
                 let appOpened = false;
                 window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
                 window.addEventListener('blur', () => {
@@ -42,15 +44,16 @@
                     appOpened = true;
                     })
                   };
+                }, 2500);
               
                     
-                setTimeout(function() {
-                    document.getElementById('myButton').textContent = `₽10`;
-                     if (!appOpened) {  
+                
+                document.getElementById('myButton').textContent = `₽11`;
+                    if (!appOpened) {  
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
 
-                }, 2500);
+                
                 
             } else if (/iPad|iPhone|iPod/.test(userAgent)) {
                 os = "iOS";
