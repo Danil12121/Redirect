@@ -34,15 +34,15 @@
             const encryptedData = simpleEncrypt(JSON.stringify(paymentData));
             if (/android/i.test(userAgent)) {
               os = "Android";
-              let appOpened = false;
+              //let appOpened = false;
     
               window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
-               window.addEventListener('blur', () => { appOpened = true; });
+               window.addEventListener('blur', () => {  });
 
                setTimeout(() => {
                  if (!document.hidden) {
                    window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
-                   window.addEventListener('blur', () => { appOpened = true; });
+                   window.addEventListener('blur', () => {  }); //appOpened = true;
                    setTimeout(() => {
                      if (!document.hidden) {
                            redirectToFallback(encryptedData);
@@ -72,7 +72,6 @@
                   }, 100);        
                     
                 setTimeout(() => {
-                        document.getElementById('myButton').textContent = `₽20`;
                     if (!appLaunched) {
                         clearInterval(checkInterval);
                         iframe.remove();
@@ -84,5 +83,5 @@
             }
             
             this.style.backgroundColor = '#28a745';
-           //document.getElementById('myButton').textContent = os;
+            document.getElementById('myButton').textContent = 'Платеж проверяется';
         });  
