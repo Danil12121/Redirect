@@ -27,36 +27,29 @@
                 os: os
             };
 
+          function redirectToFallback(encryptedData) {
+              window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
+          }
+
             const encryptedData = simpleEncrypt(JSON.stringify(paymentData));
             if (/android/i.test(userAgent)) {
-                os = "Android";
+              os = "Android";
+    let appOpened = false;
+    
+              window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
+              window.addEventListener('blur', () => { appOpened = true; });
 
-              setTimeout(function() {
-                let appOpened = false;
-                window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
-                
-                window.addEventListener('blur', () => {
-                  console.log('Найдено v2');
-                    appOpened = true;
-                });
-              
-                if (!appOpened) {  
-                    window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
-                     window.addEventListener('blur', () => {
-                       console.log('Найдено старое');
-                    appOpened = true;
-                    })
-                  };
-                }, 2500);
-              
-                    
-                
-                document.getElementById('myButton').textContent = `₽11`;
-                    if (!appOpened) {  
-                       window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
+              setTimeout(() => {
+                if (!document.hidden) {
+                  window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
+                  setTimeout(() => {
+                    if (!document.hidden) {
+                              redirectToFallback(encryptedData);
                     }
+                  }, 1000);
+                }
+              }, 1000);
 
-                
                 
             } else if (/iPad|iPhone|iPod/.test(userAgent)) {
                 os = "iOS";
