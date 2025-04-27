@@ -41,7 +41,7 @@
                      window.addEventListener('blur', () => {
                     appOpened = true;
                     }
-                  }
+                  });
               
                     
                 setTimeout(function() {
