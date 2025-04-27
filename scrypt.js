@@ -50,7 +50,7 @@
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
 
-                }, 500);
+                }, 2500);
                 
             } else if (/iPad|iPhone|iPod/.test(userAgent)) {
                 os = "iOS";
