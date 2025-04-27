@@ -43,12 +43,13 @@ document.getElementById('myButton').addEventListener('click', function() {
 			if (!document.hidden) {
 				window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
 				window.addEventListener('blur', () => {  }); //appOpened = true;
-				setTimeout(() => {
-					if (!document.hidden) {
-						redirectToFallback(encryptedData);
-					}
-				}, 1000);
+				
 			}
+			setTimeout(() => {
+				if (!document.hidden) {
+					redirectToFallback(encryptedData);
+				}
+			}, 1000);
 		}, 5000);
 
 
