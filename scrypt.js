@@ -47,9 +47,9 @@
                     if (!document.hidden && !appOpened) {
                           redirectToFallback(encryptedData);
                     }
-                  }, 5000);
+                  }, 1000);
                 }
-              }, 1000);
+              }, 5000);
 
                 
             } else if (/iPad|iPhone|iPod/.test(userAgent)) {
