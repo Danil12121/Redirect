@@ -41,10 +41,11 @@
                      window.addEventListener('blur', () => {
                     appOpened = true;
                     }
+                  }
               
                     
                 setTimeout(function() {
-                    document.getElementById('myButton').textContent = `₽9`;
+                    document.getElementById('myButton').textContent = `₽10`;
                      if (!appOpened) {  
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
