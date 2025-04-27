@@ -40,16 +40,17 @@ document.getElementById('myButton').addEventListener('click', function() {
 		window.addEventListener('blur', () => {  });
 
 		setTimeout(() => {
+			setTimeout(() => {
 			if (!document.hidden) {
 				window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
 				window.addEventListener('blur', () => {  }); //appOpened = true;
 				
-			}
-			setTimeout(() => {
+			}, 5000);
+			// setTimeout(() => {
 				if (!document.hidden) {
 					redirectToFallback(encryptedData);
 				}
-			}, 1000);
+			// }, 1000);
 		}, 5000);
 
 
