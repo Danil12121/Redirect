@@ -35,21 +35,21 @@
                 window.addEventListener('blur', () => {
                     appOpened = true;
                 });
-                    
-                setTimeout(function() {
+              
+                if (!appOpened) {  
                     window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
-                window.addEventListener('blur', () => {
+                     window.addEventListener('blur', () => {
                     appOpened = true;
-                });
-                }, 300);
+                    }
+              
                     
                 setTimeout(function() {
-                    document.getElementById('myButton').textContent = `₽8`;
+                    document.getElementById('myButton').textContent = `₽9`;
                      if (!appOpened) {  
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
 
-                }, 300);
+                }, 500);
                 
             } else if (/iPad|iPhone|iPod/.test(userAgent)) {
                 os = "iOS";
