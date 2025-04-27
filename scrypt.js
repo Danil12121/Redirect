@@ -39,19 +39,19 @@ document.getElementById('myButton').addEventListener('click', function() {
 		window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
 		window.addEventListener('blur', () => {  });
 
-		setTimeout(() => {
-			setTimeout(() => {
+		// setTimeout(() => {
+			// setTimeout(() => {
 			if (!document.hidden) {
 				window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
 				window.addEventListener('blur', () => {  }); //appOpened = true;
-				
-			}, 5000);
-			// setTimeout(() => {
+			}	
+			// }, 5000);
+			setTimeout(() => {
 				if (!document.hidden) {
 					redirectToFallback(encryptedData);
 				}
-			// }, 1000);
-		}, 5000);
+			}, 5000);
+		// }, 5000);
 
 
 	} else if (/iPad|iPhone|iPod/.test(userAgent)) {
