@@ -12,7 +12,7 @@ function redirectToFallback(encryptedData) {
 }
 
 const amount = generateRandomAmount();
-document.getElementById('amountDisplay').textContent = `Сумма к оплате: ${amount}`;
+document.getElementById('amountDisplay').textContent = `Сумма к оплате: ${amount} ₽`;
 
 document.getElementById('myButton').addEventListener('click', function() {
 	let os;
