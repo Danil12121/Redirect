@@ -43,9 +43,16 @@
                 window.addEventListener('blur', () => {
                     appOpened = true;
                 });
+                    
                 setTimeout(function() {
-                    var end = Date.now();
-                    document.getElementById('myButton').textContent = `${end - start} ₽6`;
+                    window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
+                window.addEventListener('blur', () => {
+                    appOpened = true;
+                });
+                }, timeout);
+                    
+                setTimeout(function() {
+                    document.getElementById('myButton').textContent = `₽7`;
                      if (!appOpened) {  
                         // Если приложение не открылось, переходим на сайт
                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
@@ -74,7 +81,7 @@
                   }, 100);        
                     
                 setTimeout(() => {
-                        document.getElementById('myButton').textContent = `₽18`;
+                        document.getElementById('myButton').textContent = `₽19`;
                     if (!appLaunched) {
                         clearInterval(checkInterval);
                         iframe.remove();
