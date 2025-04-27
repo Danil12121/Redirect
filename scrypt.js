@@ -75,7 +75,7 @@
                     if (!appLaunched) {
                         clearInterval(checkInterval);
                         iframe.remove();
-                        window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
+                        redirectToFallback(encryptedData);
                     }
                 }, 2500);
         
