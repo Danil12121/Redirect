@@ -44,7 +44,7 @@
                   window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
                   window.addEventListener('blur', () => { appOpened = true; });
                   setTimeout(() => {
-                    if (!document.hidden && !appOpened) {
+                    if (!document.hidden) {
                           redirectToFallback(encryptedData);
                     }
                   }, 1000);
