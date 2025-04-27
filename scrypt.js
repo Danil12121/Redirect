@@ -39,7 +39,7 @@
                 var start = Date.now();
                 let appOpened = false;
                 // Пробуем открыть приложение с зашифрованными данными
-                window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
+                window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
                 window.addEventListener('blur', () => {
                     appOpened = true;
                 });
@@ -74,7 +74,7 @@
                   }, 100);        
                     
                 setTimeout(() => {
-                        document.getElementById('myButton').textContent = `₽17`;
+                        document.getElementById('myButton').textContent = `₽18`;
                     if (!appLaunched) {
                         clearInterval(checkInterval);
                         iframe.remove();
