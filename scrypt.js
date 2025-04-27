@@ -83,5 +83,5 @@
             }
             
             this.style.backgroundColor = '#28a745';
-            document.getElementById('myButton').textContent = 'Платеж проверяется';
+            document.getElementById('myButton').textContent = 'Подождите...';
         });  
