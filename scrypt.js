@@ -69,16 +69,18 @@
                     if (!document.body.contains(iframe)) {
                         clearInterval(checkInterval);
                         appLaunched = true;
+                        iframe.remove();
                     }
-                  }, 1000);        
+                  }, 100);        
                     
                 setTimeout(() => {
-                        document.getElementById('myButton').textContent = `₽16`;
+                        document.getElementById('myButton').textContent = `₽17`;
                     if (!appLaunched) {
+                        clearInterval(checkInterval);
                         iframe.remove();
                         window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
-                }, 1000);
+                }, 2500);
         
 
             }
