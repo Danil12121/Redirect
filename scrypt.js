@@ -40,8 +40,8 @@
                     window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
                      window.addEventListener('blur', () => {
                     appOpened = true;
-                    }
-                  });
+                    })
+                  };
               
                     
                 setTimeout(function() {
