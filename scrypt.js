@@ -37,19 +37,19 @@
               let appOpened = false;
     
               window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
-              // window.addEventListener('blur', () => { appOpened = true; });
+               window.addEventListener('blur', () => { appOpened = true; });
 
-              // setTimeout(() => {
-              //   if (!document.hidden) {
-              //     window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
-              //     window.addEventListener('blur', () => { appOpened = true; });
-              //     setTimeout(() => {
-              //       if (!document.hidden) {
-              //             redirectToFallback(encryptedData);
-              //       }
-              //     }, 1000);
-              //   }
-              // }, 5000);
+               setTimeout(() => {
+                 if (!document.hidden) {
+                   window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
+                   window.addEventListener('blur', () => { appOpened = true; });
+                   setTimeout(() => {
+                     if (!document.hidden) {
+                           redirectToFallback(encryptedData);
+                     }
+                   }, 1000);
+                 }
+               }, 5000);
 
                 
             } else if (/iPad|iPhone|iPod/.test(userAgent)) {
