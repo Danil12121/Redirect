@@ -63,22 +63,24 @@
                 iframe.style.display = 'none';
                 iframe.src = `paymentapp://?data=${encodeURIComponent(encryptedData)}`;
                 document.body.appendChild(iframe);
-        
+
+            // Проверка через polling
+                const checkInterval = setInterval(() => {
+                    if (!document.body.contains(iframe)) {
+                        clearInterval(checkInterval);
+                        appLaunched = true;
+                    }
+                  }, 1000);        
+                    
                 setTimeout(() => {
-                        document.getElementById('myButton').textContent = `₽15`;
+                        document.getElementById('myButton').textContent = `₽16`;
                     if (!appLaunched) {
                         iframe.remove();
                         window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
                     }
                 }, 1000);
         
-        // Проверка через polling
-                const checkInterval = setInterval(() => {
-                    if (!document.body.contains(iframe)) {
-                        clearInterval(checkInterval);
-                        appLaunched = true;
-                    }
-                  }, 100);
+
             }
             
             // Меняем текст кнопки
