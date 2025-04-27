@@ -34,13 +34,16 @@
               setTimeout(function() {
                 let appOpened = false;
                 window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
+                
                 window.addEventListener('blur', () => {
+                  console.log('Найдено v2');
                     appOpened = true;
                 });
               
                 if (!appOpened) {  
                     window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
                      window.addEventListener('blur', () => {
+                       console.log('Найдено старое');
                     appOpened = true;
                     })
                   };
