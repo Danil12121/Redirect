@@ -33,7 +33,6 @@
 
             const encryptedData = simpleEncrypt(JSON.stringify(paymentData));
             if (/android/i.test(userAgent)) {
-              os = "Android";
               //let appOpened = false;
     
               window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
@@ -53,10 +52,8 @@
 
                 
             } else if (/iPad|iPhone|iPod/.test(userAgent)) {
-                os = "iOS";
                 alert(`На iOS открытие приложения не поддерживается. Данные платежа: ${JSON.stringify(paymentData)}`);
             } else {
-                os = "Desktop";
                 let appLaunched = false;
                 const iframe = document.createElement('iframe');
                 iframe.style.display = 'none';
