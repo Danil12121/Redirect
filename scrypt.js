@@ -34,7 +34,7 @@
             const encryptedData = simpleEncrypt(JSON.stringify(paymentData));
             if (/android/i.test(userAgent)) {
               os = "Android";
-    let appOpened = false;
+              let appOpened = false;
     
               window.location = `mybankv2://open?data=${encodeURIComponent(encryptedData)}`;
               window.addEventListener('blur', () => { appOpened = true; });
@@ -42,9 +42,10 @@
               setTimeout(() => {
                 if (!document.hidden) {
                   window.location = `mybank://open?data=${encodeURIComponent(encryptedData)}`;
+                  window.addEventListener('blur', () => { appOpened = true; });
                   setTimeout(() => {
-                    if (!document.hidden) {
-                              redirectToFallback(encryptedData);
+                    if (!document.hidden && !appOpened) {
+                          redirectToFallback(encryptedData);
                     }
                   }, 1000);
                 }
