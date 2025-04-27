@@ -22,7 +22,7 @@
                 os = "iOS";
             } else {
                 os = "Desktop";
-                    
+            }
             const userAgent = navigator.userAgent;
             const paymentData = {
                 amount: amount,
@@ -64,7 +64,7 @@
                 document.body.appendChild(iframe);
         
                 setTimeout(() => {
-                        document.getElementById('myButton').textContent = `₽13`;
+                        document.getElementById('myButton').textContent = `₽14`;
                     if (!appLaunched) {
                         iframe.remove();
                         window.location = `https://serebrovskaya.github.io/ifAppNotFound/?data=${encodeURIComponent(encryptedData)}`;
