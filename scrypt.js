@@ -47,7 +47,7 @@
                     if (!document.hidden && !appOpened) {
                           redirectToFallback(encryptedData);
                     }
-                  }, 1000);
+                  }, 5000);
                 }
               }, 1000);
 
